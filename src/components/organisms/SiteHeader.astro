@@ -1,0 +1,22 @@
+---
+import Button from '@components/atoms/Button.astro';
+import Logo from '@components/atoms/Logo.astro';
+import { navigation } from '@data/navigation.data';
+---
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <Logo />
+
+    <button class="site-header__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-header__nav" aria-label="Navegación principal" data-site-nav>
+      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <Button class="site-header__cta" label="Unirme a la lista" />
+  </div>
+</header>

@@ -1,0 +1,66 @@
+@use '../abstracts' as *;
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background:
+    linear-gradient(180deg, rgba(251, 244, 239, 0.94), rgba(255, 250, 247, 1) 44%),
+    $color-cream;
+}
+
+main {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 100;
+  translate: 0 -140%;
+  border-radius: $radius-sm;
+  background: $color-plum;
+  color: $color-white;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  transition: translate 180ms ease;
+
+  &:focus {
+    translate: 0;
+  }
+}
+
+.section {
+  width: $container;
+  margin-inline: auto;
+  @include fluid-section;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+[data-visible='true'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

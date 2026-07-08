@@ -1,0 +1,36 @@
+---
+import Button from '@components/atoms/Button.astro';
+
+interface Props {
+  course: {
+    id: string;
+    title: string;
+    subtitle: string;
+    durationEstimate: string;
+    image: string;
+    imageAlt: string;
+    modules: readonly string[];
+  };
+}
+
+const { course } = Astro.props;
+---
+
+<article class="course-card" data-reveal>
+  <div class="course-card__media">
+    <img src={course.image} alt={course.imageAlt} loading="lazy" decoding="async" />
+  </div>
+  <div class="course-card__body">
+    <span>{course.durationEstimate}</span>
+    <h3>{course.title}</h3>
+    <p>{course.subtitle}</p>
+    <ul aria-label={`Módulos de ${course.title}`}>
+      {course.modules.slice(0, 3).map((module) => <li>{module}</li>)}
+    </ul>
+    <Button
+      label="Quiero más información"
+      variant="secondary"
+      message={`Hola Mercedes, quiero más información sobre ${course.title}.`}
+    />
+  </div>
+</article>

@@ -1,0 +1,77 @@
+---
+import { methodology } from '@data/method.data';
+
+const icons = {
+  diagnose: [
+    '<ellipse cx="15" cy="20" rx="9" ry="11"/>',
+    '<circle cx="12.5" cy="18" r=".9" fill="currentColor" stroke="none"/>',
+    '<circle cx="17.5" cy="18" r=".9" fill="currentColor" stroke="none"/>',
+    '<circle cx="28" cy="15" r="6"/>',
+    '<line x1="32.2" y1="19.2" x2="37" y2="24"/>'
+  ].join(''),
+  personalize: [
+    '<ellipse cx="20" cy="21" rx="10" ry="12"/>',
+    '<path d="M20 9v24" stroke-dasharray="1.6 3.4"/>',
+    '<path d="M10 18h20" stroke-dasharray="1.6 3.4"/>',
+    '<path d="M11 27h18" stroke-dasharray="1.6 3.4"/>'
+  ].join(''),
+  practice: [
+    '<line x1="11" y1="30" x2="22" y2="19"/>',
+    '<path d="M22 19c1-3.2 3.2-5.4 6.5-6.5 1 3.3-1.2 5.5-6.5 6.5z"/>',
+    '<circle cx="11" cy="30.6" r="1.5" fill="currentColor" stroke="none"/>',
+    '<circle cx="30" cy="29" r="3.4"/>'
+  ].join(''),
+  feedback: [
+    '<path d="M6 13a4 4 0 0 1 4-4h11a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H14l-4.5 3.6V22H10a4 4 0 0 1-4-4z"/>',
+    '<path d="M20 23a4 4 0 0 0 4 4h6.5L34 30v-3.4h1a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4h-3"/>'
+  ].join(''),
+  certify: [
+    '<circle cx="20" cy="15" r="8"/>',
+    '<path d="M20 10.8l1.1 2.3 2.5.4-1.8 1.8.4 2.5-2.2-1.2-2.2 1.2.4-2.5-1.8-1.8 2.5-.4z" fill="currentColor" stroke="none"/>',
+    '<path d="M14.5 21.5L12 32l6-3.4 2 4 2-4 6 3.4-2.5-10.5"/>'
+  ].join('')
+};
+---
+
+<section class="method section" id="metodo" aria-labelledby="method-title">
+  <div class="method__grid">
+    <div class="method__intro" data-reveal>
+      <p class="eyebrow">{methodology.eyebrow}</p>
+      <h2 id="method-title">
+        Método<br />
+        ESENCIA
+      </h2>
+      <p class="method__lede">{methodology.intro}</p>
+
+      <figure class="method__quote">
+        <svg class="method__quote-mark" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 14c0-6 3-10 8-11M14 14c0-6 3-10 8-11"></path>
+        </svg>
+        <blockquote>{methodology.quote}</blockquote>
+        <figcaption>— {methodology.quoteAuthor}</figcaption>
+        <p>{methodology.quoteSupport}</p>
+      </figure>
+
+      <div class="method__dims" aria-label="Dimensiones del Método ESENCIA">
+        {methodology.frameworkPillars.map((pillar) => <span>{pillar.name}</span>)}
+      </div>
+    </div>
+
+    <div class="method__timeline" data-method-timeline>
+      <div class="method__thread" aria-hidden="true"></div>
+      <div class="method__thread-fill" data-method-thread-fill aria-hidden="true"></div>
+
+      {methodology.pillars.map((pillar) => (
+        <article class="method-step" data-method-step>
+          <div class="method-step__node" aria-hidden="true"></div>
+          <div class="method-step__top">
+            <svg class="method-step__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[pillar.icon]} />
+            <span class="method-step__ghost" aria-hidden="true">{pillar.number}</span>
+          </div>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

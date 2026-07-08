@@ -1,0 +1,12 @@
+---
+import FaqItem from '@components/molecules/FaqItem.astro';
+import { faqs } from '@data/faq.data';
+---
+
+<section class="faq section" aria-labelledby="faq-title">
+  <p class="eyebrow">Preguntas frecuentes</p>
+  <h2 id="faq-title">Antes de entrar a la lista</h2>
+  <div class="faq__grid">
+    {faqs.map((faq) => <FaqItem {...faq} />)}
+  </div>
+</section>

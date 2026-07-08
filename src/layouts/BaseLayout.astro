@@ -1,0 +1,61 @@
+---
+import SiteFooter from '@components/organisms/SiteFooter.astro';
+import SiteHeader from '@components/organisms/SiteHeader.astro';
+import { jsonLd, seo } from '@data/seo.data';
+import '@styles/app.scss';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const title = Astro.props.title ?? seo.title;
+const description = Astro.props.description ?? seo.description;
+const canonical = new URL(seo.canonical, Astro.site ?? 'https://mercedesastorima.academy').toString();
+const image = new URL(seo.image, Astro.site ?? 'https://mercedesastorima.academy').toString();
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={seo.themeColor} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preload" as="image" href="/images/hero-mercedes-real-desktop.webp" fetchpriority="high" media="(min-width: 761px)" />
+    <link rel="preload" as="image" href="/images/hero-mercedes-real-mobile.webp" fetchpriority="high" media="(max-width: 760px)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    {jsonLd.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+    <script src="../scripts/header.ts"></script>
+    <script src="../scripts/faq.ts"></script>
+    <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/method.ts"></script>
+    <script src="../scripts/whatsapp.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  icon: string;
+}
+
+const { value, label, icon } = Astro.props;
+
+const icons = {
+  users:
+    'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  play:
+    'M10 8.64v6.72L16 12l-6-3.36ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+  sparkle:
+    'M12 3l1.9 5.7L20 11l-6.1 2.3L12 19l-1.9-5.7L4 11l6.1-2.3L12 3ZM5 3v4M3 5h4M19 17v4M17 19h4',
+  award:
+    'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12ZM9 14.2 8 22l4-2 4 2-1-7.8'
+};
+---
+
+<article class="metric-card" data-reveal>
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <path d={icons[icon as keyof typeof icons]} />
+  </svg>
+  <div>
+    <strong>{value}</strong>
+    <span>{label}</span>
+  </div>
+</article>

@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+.section-header {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+
+  p:not(.eyebrow) {
+    margin-inline: auto;
+    color: $color-ink-soft;
+  }
+}
+
+.section-header--left {
+  margin-inline: 0;
+  text-align: start;
+
+  p:not(.eyebrow) {
+    margin-inline: 0;
+  }
+}

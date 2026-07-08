@@ -1,0 +1,8 @@
+@mixin focus-ring {
+  outline: 2px solid rgba(125, 63, 102, 0.9);
+  outline-offset: 4px;
+}
+
+@mixin fluid-section {
+  padding-block: clamp(4rem, 8vw, 8.5rem);
+}

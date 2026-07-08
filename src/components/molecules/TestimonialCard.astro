@@ -1,0 +1,19 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+  role: string;
+}
+
+const { quote, author, role } = Astro.props;
+---
+
+<article class="testimonial-card" data-reveal>
+  <span aria-hidden="true">“</span>
+  <p>{quote}</p>
+  <footer>
+    <strong>{author}</strong>
+    <small>{role}</small>
+    <span aria-label="5 estrellas">★★★★★</span>
+  </footer>
+</article>

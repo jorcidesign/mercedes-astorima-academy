@@ -1,0 +1,10 @@
+{
+  "name": "Mercedes Astorima Academy",
+  "short_name": "MA Academy",
+  "description": "Academia online de maquillaje y peinado profesional para mujeres que quieren transformar su talento en una carrera real.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf4ef",
+  "theme_color": "#7d3f66",
+  "icons": []
+}

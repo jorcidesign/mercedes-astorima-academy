@@ -1,0 +1,16 @@
+---
+import CourseCard from '@components/molecules/CourseCard.astro';
+import SectionHeader from '@components/molecules/SectionHeader.astro';
+import { courses } from '@data/courses.data';
+---
+
+<section class="courses section" id="cursos">
+  <SectionHeader
+    eyebrow="Nuestros cursos"
+    title="Elige tu camino profesional"
+    lead="Tres rutas diseñadas para aprender técnica, criterio, servicio y negocio dentro de una sola membresía."
+  />
+  <div class="courses__grid">
+    {courses.map((course) => <CourseCard course={course} />)}
+  </div>
+</section>

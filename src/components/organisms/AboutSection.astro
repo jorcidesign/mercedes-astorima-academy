@@ -1,0 +1,40 @@
+---
+import Button from '@components/atoms/Button.astro';
+import SectionHeader from '@components/molecules/SectionHeader.astro';
+import { academy } from '@data/academy.data';
+---
+
+<section class="about section" id="mercedes">
+  <div class="about__media" data-reveal>
+    <img
+      src="/images/about-mercedes-real.webp"
+      alt="Mercedes Astorima en su estudio profesional de maquillaje"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+
+  <div class="about__copy">
+    <SectionHeader
+      eyebrow="Sobre Mercedes"
+      title="Aprende de una profesional real."
+      align="left"
+    />
+    <p>
+      Mercedes Astorima ha formado, maquillado y acompañado a mujeres en bodas, sesiones, eventos, producciones y clases personalizadas.
+    </p>
+    <p>
+      Ahora reúne esa experiencia en una academia online para aprender técnica, práctica y criterio profesional.
+    </p>
+    <Button label="Conoce mi historia" variant="secondary" />
+  </div>
+
+  <aside class="about__facts" aria-label="Trayectoria de Mercedes Astorima" data-reveal>
+    {academy.founderBioFacts.map((fact) => (
+      <p>
+        <span aria-hidden="true"></span>
+        {fact}
+      </p>
+    ))}
+  </aside>
+</section>

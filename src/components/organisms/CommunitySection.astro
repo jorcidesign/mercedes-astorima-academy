@@ -1,0 +1,28 @@
+---
+import Button from '@components/atoms/Button.astro';
+import { community, membership } from '@data/community.data';
+---
+
+<section class="community section" id="comunidad">
+  <div class="community__image" data-reveal>
+    <img src={community.image.src} alt={community.image.alt} loading="lazy" decoding="async" />
+  </div>
+  <div class="community__copy" data-reveal>
+    <p class="eyebrow">{community.eyebrow}</p>
+    <h2>{community.title}</h2>
+    <p>{community.description}</p>
+    <ul>
+      {community.benefits.map((benefit) => <li>{benefit}</li>)}
+    </ul>
+  </div>
+  <aside class="membership-card" data-reveal>
+    <p class="eyebrow">{membership.eyebrow}</p>
+    <h2>{membership.title}</h2>
+    <p>{membership.description}</p>
+    <div>
+      <strong>{membership.price}</strong>
+      <span>{membership.frequency}</span>
+    </div>
+    <Button label={membership.cta} variant="light" />
+  </aside>
+</section>

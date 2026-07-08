@@ -1,0 +1,12 @@
+---
+import SectionHeader from '@components/molecules/SectionHeader.astro';
+import TestimonialCard from '@components/molecules/TestimonialCard.astro';
+import { testimonials } from '@data/testimonials.data';
+---
+
+<section class="testimonials section" aria-labelledby="testimonials-title">
+  <SectionHeader title="Ellas ya se están transformando" />
+  <div class="testimonials__grid">
+    {testimonials.map((testimonial) => <TestimonialCard {...testimonial} />)}
+  </div>
+</section>

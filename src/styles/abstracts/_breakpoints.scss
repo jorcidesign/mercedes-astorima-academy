@@ -1,0 +1,19 @@
+@mixin up($size) {
+  @if $size == md {
+    @media (min-width: 760px) {
+      @content;
+    }
+  }
+
+  @if $size == lg {
+    @media (min-width: 1040px) {
+      @content;
+    }
+  }
+
+  @if $size == xl {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+---
+import Button from '@components/atoms/Button.astro';
+import MetricCard from '@components/molecules/MetricCard.astro';
+import { hero } from '@data/hero.data';
+---
+
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__media" aria-hidden="true">
+    <picture>
+      <source srcset={hero.image.mobileSrc} media="(max-width: 760px)" />
+      <img
+        src={hero.image.src}
+        alt=""
+        width="1792"
+        height="1024"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+  </div>
+  <div class="hero__content">
+    <p class="eyebrow" data-reveal>{hero.eyebrow}</p>
+    <h1 id="hero-title" data-reveal>{hero.title}</h1>
+    <p data-reveal>{hero.lead}</p>
+    <div class="hero__actions" data-reveal>
+      <Button label={hero.primaryCta} />
+      <Button href="#cursos" label={hero.secondaryCta} variant="secondary" />
+    </div>
+  </div>
+  <p class="hero__signature" aria-hidden="true">{hero.signature}</p>
+</section>
+
+<section class="metrics" aria-label="Credenciales de Mercedes Astorima Academy">
+  <div class="metrics__grid">
+    {hero.metrics.map((metric) => <MetricCard {...metric} />)}
+  </div>
+</section>
